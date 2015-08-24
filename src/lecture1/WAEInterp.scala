@@ -2,6 +2,21 @@ package lecture1
 
 import scala.language.implicitConversions
 
+/**
+ * Host language:
+ *    Language in which the interpreter is implemented.
+ *
+ * Interpreted language:
+ *    The language that the interpreter evaluates.
+ *
+ *  Meta-Interpreter
+ *    Host language == Interpreted Language
+ *
+ *  Substitution:
+ *    To substitute identifier i in e with expression v, replace
+ *    all _free_ instances of i in e with v.
+ */
+
 sealed abstract class WAE
 
 case class Num(n: Int) extends WAE
