@@ -1,4 +1,4 @@
-package lecture2
+package V2
 
 /**
  * Taxonomy of Functions
@@ -83,14 +83,3 @@ package lecture2
  *
  *    val funEnv = env + Map(param -> interp(arg, funDefs, env))
  */
-
-
-/**
- * A major difficulty of substitution is the number of times we traverse
- * the source program. Substitution traverses everything for example unvisited
- * branches of conditionals. We come over this problem by introducing the
- * environment concept that enables fast identifier lookups.
- */
-object F1WAE extends App {
-
-}

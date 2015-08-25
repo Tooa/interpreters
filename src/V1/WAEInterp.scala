@@ -1,4 +1,4 @@
-package lecture1
+package V1
 
 import scala.language.implicitConversions
 
