@@ -2,8 +2,9 @@ package V2
 
 
 /**
- * First-Class function interpreter using lazy substitution. Functions are real values,
- * can be passed around, stored in data structures or returned (See VFun).
+ * First-Class function interpreter using lazy substitution. Function definitions are expressions
+ * i.e can be passed around. They evaluate to values, which means they can be returned (See VFun)
+ * or stored in a data structure.
  */
 object FWAEImmediateSubstInterp extends App {
 

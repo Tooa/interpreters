@@ -9,7 +9,7 @@ import scala.language.implicitConversions
  * Interpreted language:
  *    The language that the interpreter evaluates.
  *
- *  Meta-Interpreter
+ *  Metacircular-Interpreter
  *    Host language == Interpreted Language
  *
  *  Substitution:

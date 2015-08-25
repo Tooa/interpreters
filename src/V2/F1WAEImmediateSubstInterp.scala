@@ -3,8 +3,9 @@ package V2
 
 /**
  * First-Order function interpreter using substitution. In First-Order languages,
- * functions are no values and can not be returned and passed around. So we introduce
- * them as separate concept.
+ * functions are no values and thus can not be returned. Because they are also no
+ * expressions in the language they cannot be passed around. This is why we introduce
+ * them as separate concept and pass functions as parameter to the interpreter.
  */
 object F1WAEImmediateSubstInterp extends App {
 
