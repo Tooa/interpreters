@@ -67,7 +67,7 @@ object F1WAEImmediateSubstInterp extends App {
   )
 
   assert(interp(App('f, 10), funDefs) == 8)
-  assert(interp(Let('x, 3, Add(Let('x, 4, Add('x, 3)), 'x)), Map()) == 10)
+  assert(interp(Let('x, Add(2, 1), Add(Let('x, 4, Add('x, 3)), 'x)), Map()) == 10)
 
   // This doesn't work because substitution is not applied to the function definition.
   // See subst case App
