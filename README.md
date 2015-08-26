@@ -9,7 +9,7 @@ at TU Darmstadt.
     * **WAEInterp**: Interpreter that supports *With* constructs and *Arithmetic Expressions*. Showing the 
     difference between eager substitution and lazy substitution. 
       
- 2. Package V2: *Taxonomy of Functions, Static vs. Dynamic Scoping*
+ 2. Package V2: **Taxonomy of Functions, Static vs. Dynamic Scoping**
     * **F1WAEImmediateSubstInterp**: *First-Order* interpreter with *Arithmetic Expressions* and *With* constructs using eager substitution.
     * **F1WAEDynamicInterp**: *First-Order* interpreter that introduces the concept of environments and showing its advantage 
     over substitution. The interpreter adapts *dynamic scoping*.
@@ -28,6 +28,7 @@ at TU Darmstadt.
  4. Package V4: **Stateful languages**
     * **SCFWAEInterp**: Stateful interpreter with sequencing, values and box stores. To preserve static scoping an additional store is introduced. 
     This concept is called *store-passing style*. Function application is implemented using *call-by-value* style. 
+    * **RSCFWAEInterp**: Stateful interpreter with recursion support.
     
 ## Types of Interpreters
 

@@ -129,6 +129,39 @@ object SCFWAEInterp extends App {
           interp(fBody, fEnv + (fParam -> nextLoc), argStore + (nextLoc -> argV))
         case _ => sys.error("Can only call functions.")
       }
+
+    /*
+      This alternative implements call-by-reference passing style.
+      Note, that the store is not updated and we require the argExpr
+      to be an identifier
+
+      With('v, 0,
+        With('f, Fun('x, SetId('x, 5)),
+          Seqn(
+            App('f, 'v),
+            'v)))
+
+      We use different tags to distinguish between the two kind of functions
+      at application time. Functions are syntactically the same as call-by-value
+      functions except for the different introduced keyword.
+
+      case ReFun(arg, body) => (RefClosure(arg, body, env), store)
+
+      case App(funExpr, argExpr) => {
+        val (funV, funStore) = interp(funExpr, env, store)
+        funV match {
+          // case Closure(fParam, fBody, fEnv) => ...
+          case RefClosure(fParam, fBody, fEnv) => argExpr match {
+            case Id(argName) => {
+              interp(fBody, fEnv + (fParam -> env(argName)), funStore)
+            }
+            case _ => sys.error("can only call identifiers by reference")
+          }
+          case _ => sys.error("can only apply functions, but got: " + funV)
+        }
+    }*/
+
+
     case Seqn(e1: SCFWAE, e2: SCFWAE) =>
       val(v1, s1) = interp(e1, env, store)
       interp(e2, env, s1)
