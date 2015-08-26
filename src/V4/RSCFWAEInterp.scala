@@ -3,7 +3,7 @@ package V4
 /**
  * This implements recursion for stateful languages.
  */
-object RSCFWAEInterp {
+object RSCFWAEInterp extends App {
 
   sealed abstract class SCFWAE
 
@@ -33,7 +33,7 @@ object RSCFWAEInterp {
     _currentLocation
   }
 
-  type Env = scala.collection.mutable.Map[Symbol, Location]
+  type Env = Map[Symbol, Location]
   type Store = Map[Location, Val]
 
   sealed abstract class Val
@@ -43,7 +43,7 @@ object RSCFWAEInterp {
   case class Box(location: Location) extends Val
 
   // Env is now a mutual map!
-  def interp(expr: SCFWAE, env: Env = scala.collection.mutable.Map(), store: Store = Map()): (Val, Store) = expr match {
+  def interp(expr: SCFWAE, env: Env = Map(), store: Store = Map()): (Val, Store) = expr match {
 
     case Num(n) => (NumV(n), store)
 
@@ -168,7 +168,7 @@ object RSCFWAEInterp {
   // Test for factorial function
   val fact = LetRec('fact, Fun('n, If0('n, 1, Mult('n, App('fact, Sub('n, 1))))), 'fact)
   val (t1, _) = interp(App(fact, 5))
-  assert(NumV(120) == 120)
+  assert(t1 == NumV(120))
 
   // Test of shadowing behavior of "letrec" and "let"
   val (t2, _) = interp(Let('x, 23, Let('x, Add('x, 42), 'x)))
