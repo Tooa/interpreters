@@ -22,6 +22,10 @@ at TU Darmstadt.
     * **FWAEStaticInterp**: *First-class* interpreter with *Arithmetic Expressions* and *With* constructs using environments. To enforce 
     *static scoping* *closures* are introduced as a basic concept. 
     
+    -----------------------------
+    
+    * **DRCFAEInterp**: *First-class* interpreter with algebraic data type support.
+    
  3. Package V3: **Recursion**
     * **RCFWAEInterp**: *First-class* statically scoped interpreter with conditionals and recursion.
      
@@ -29,6 +33,13 @@ at TU Darmstadt.
     * **SCFWAEInterp**: Stateful interpreter with sequencing, values and box stores. To preserve static scoping an additional store is introduced. 
     This concept is called *store-passing style*. Function application is implemented using *call-by-value* style. 
     * **RSCFWAEInterp**: Stateful interpreter with recursion support.
+    
+ 5. Package V5: **Memory management**
+    * **RefCount_SRCFWAEInterp**: Stateful interpreter with a reference counting store.
+    * **GC_SRCFWAEInterp**: Stateful interpreter with mark and sweep garbage collection.
+ 6. Package V6: **OO Interpreter**
+    * **OOInterp**: First-order classes interpreter with predefined classes and local variables in method.
+    * **OOWithInheritanceInterp**: First-order classes interpreter with additional inheritance support. 
     
 ## Types of Interpreters
 
