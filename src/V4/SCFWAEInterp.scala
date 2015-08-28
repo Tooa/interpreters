@@ -46,7 +46,15 @@ package V4
  * We need two repositories for information:
  *    * The environment for statically scoped bindings.
  *    * The store for tracking dynamic changes.
- *
+ * 
+ * These two data structures reflect the differences between identifiers bound in the environment
+ * with static scope and values that have (potentially indefinite) dynamic extent. The store is
+ * a global record of changes made during execution. Closures however capture the environment at 
+ * function definition, but not the store (preserving of static scoping). 
+ * 
+ * Static scope of variables versus dynamic extent of values.
+ * 	> Environments as repositories for static scope.
+ *  > Stores as repositories for dynamic extent.
  */
 object SCFWAEInterp extends App {
 
