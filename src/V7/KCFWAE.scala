@@ -164,9 +164,24 @@ object KCFWAEInterp extends App {
   // Add(NumV(3), NumV(1)) -> NumV(4)
   assert(eval(Add(1, BindCC('k, App('k, 3)))) == NumV(4))
 
+  // BindCC binds the current continuation here the identity to k.
+  // Then it executes the body / the inner App
+  // App('k, Fun('_, 3))).. k is bound to the identity so it will call k(Fun(...))
+  // which will return the function Fun('_, 3)))
+  // We call then the outer App with the function Fun('_, 3))) and 1840 as argument
+  // The function simply returns NumV(3)
   assert(eval(App(BindCC('k, App('k, Fun('_, 3))), 1840)) == NumV(3))
 
+  // k is bound to the identity
+  // the app cases are interpreteted to the inside and the
+  // inner App('k, 3) yields 3 because k is bound to the Identity
+  // every outer k will also yield the identity which is NumV(3)
   assert(eval(BindCC('k, App('k, App('k, App('k, 3))))) == NumV(3))
 
+  // App calls App executes BindCC. BindCC binds 'k to the current continuation
+  // which is the identity and also executes this identity by referring to it 'k.
+  // That menas for the inner App k(Fun(...)) whereas k is the identity
+  // This yields Fun(...) to the outer App and calls it with 3 which returns
+  // the argument NumV(3)
   assert(eval(App(App(BindCC('k, 'k), Fun('x, 'x)), 3)) == NumV(3))
 }
