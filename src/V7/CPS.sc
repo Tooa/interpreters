@@ -37,4 +37,20 @@ def sumListCPS(l: List[Int], k: Int => Int): Int = l match {
 
 sumListCPS(List(1,2,3,4), identity)
 
+def remove(l: List[Int], elem: Int): List[Int] = l match {
+  case Nil => List()
+  case x::xs if(x == elem) => remove(xs, elem)
+  case x::xs => x :: remove(xs, elem)
+}
+
+def removeCPS(l: List[Int], elem: Int, k: List[Int] => List[Int]): List[Int] = l match {
+  case Nil => k(List())
+  case x::xs if(x == elem) => removeCPS(xs, elem, { res => k(xs)})
+  case x::xs => removeCPS(xs, elem, { res => k(x :: res)})
+}
+
+remove(List(1,2,3,4,5,6), 4)
+removeCPS(List(1,2,3,4,5,6), 4, identity)
+
+
 
