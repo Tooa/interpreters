@@ -77,7 +77,14 @@ object ex02 extends App {
    *    abstracts over these similarities. Reimplement 'sumTree' and 'collectTree' in terms of 'foldTree'.
    */
 
-  //def foldTree[A, B](base:):
+  def foldTree[A, B](t: Tree[A])(nodeOp: A => B)(op: (B, B) => B): B = t match {
+    case Leaf(a) => nodeOp(a)
+    case Node(l, r) => op(foldTree(l)(nodeOp)(op), foldTree(r)(nodeOp)(op))
+  }
+
+  val t = Node(Node(Leaf(2), Leaf(1)),Node(Node(Leaf(1), Leaf(3)), Node(Leaf(1), Leaf(5))))
+
+  foldTree(t)(identity)(_ + _)
 
 
   /*
