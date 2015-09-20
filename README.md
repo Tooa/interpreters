@@ -42,6 +42,11 @@ at TU Darmstadt.
     * **OOWithInheritanceInterp**: First-order classes interpreter with additional inheritance support. 
  7. Package V7: **Continuation-Passing-Style**
     * **KCFWAEInterp**: First-class continuations interpreter.
+	[...]
+ 9. Package V7: **Lazy Evaluation*
+	* **CFWAEAlmostStrictInterp**: Lazy interpreter. The interpreter is strict at function application,
+     arithmetic operations and conditionals. Only identifier lookup is non-strict.
+    * **CFWAELazyCachingInterp**: Lazy interpreter with caching capabilities. 
     
 ## Types of Interpreters
 
