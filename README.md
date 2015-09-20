@@ -37,13 +37,16 @@ at TU Darmstadt.
  5. Package V5: **Memory management**
     * **RefCount_SRCFWAEInterp**: Stateful interpreter with a reference counting store.
     * **GC_SRCFWAEInterp**: Stateful interpreter with mark and sweep garbage collection.
+
  6. Package V6: **OO Interpreter**
     * **OOInterp**: First-order classes interpreter with predefined classes and local variables in method bodies.
     * **OOWithInheritanceInterp**: First-order classes interpreter with additional inheritance support. 
+
  7. Package V7: **Continuation-Passing-Style**
     * **KCFWAEInterp**: First-class continuations interpreter.
 	[...]
- 9. Package V7: **Lazy Evaluation*
+
+ 9. Package V7: **Lazy Evaluation**
 	* **CFWAEAlmostStrictInterp**: Lazy interpreter. The interpreter is strict at function application,
      arithmetic operations and conditionals. Only identifier lookup is non-strict.
     * **CFWAELazyCachingInterp**: Lazy interpreter with caching capabilities. 
