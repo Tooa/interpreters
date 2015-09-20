@@ -42,7 +42,6 @@ object RSCFWAEInterp extends App {
   case class Closure(param: Symbol, body: SCFWAE, env: Env) extends Val
   case class Box(location: Location) extends Val
 
-  // Env is now a mutual map!
   def interp(expr: SCFWAE, env: Env = Map(), store: Store = Map()): (Val, Store) = expr match {
 
     case Num(n) => (NumV(n), store)
@@ -158,7 +157,8 @@ object RSCFWAEInterp extends App {
 
     case LetRec(boundId, namedExpr, boundBody) => {
       val newLoc = nextLocation
-      // Environment is a mutual map that enables cyclic binding
+      //In our stateful language, we do not require mutation from the
+      //host language to implement cyclic environments.
       val recEnv = env + (boundId -> newLoc)
       val (namedVal, s1) = interp(namedExpr, recEnv, store)
       interp(boundBody, recEnv, s1 + (newLoc -> namedVal))
